@@ -1,0 +1,9 @@
+/* Estilos mínimos para el componente de series */
+
+.table tbody tr {
+  cursor: pointer;
+}
+
+.table tbody tr:hover {
+  background-color: rgba(0, 123, 255, 0.075);
+}

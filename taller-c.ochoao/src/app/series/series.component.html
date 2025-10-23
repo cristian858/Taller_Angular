@@ -1,0 +1,79 @@
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container text-white font-weight-bold">TV Series</div>
+</nav>
+
+<div class="container" style="margin:24px 80px;">
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Channel</th>
+                        <th scope="col">Seasons</th>
+                        </tr>
+                    </thead>
+                    <tbody id="series">
+                        <tr 
+                            *ngFor="let serie of series(); let i = index" 
+                            (click)="onRowClick(serie, i)"
+                            [class.table-active]="isRowSelected(i)"
+                            style="cursor: pointer;">
+                            <td>{{ serie.id }}</td>
+                            <td>{{ serie.name }}</td>
+                            <td>{{ serie.channel }}</td>
+                            <td>{{ serie.seasons }}</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="4">Seasons average: <span id="avg-seasons">{{ averageSeasons() }}</span></td>       
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Series detail card will be rendered here -->
+            <div id="series-detail">
+                <div class="card">
+                    <img 
+                        [src]="selectedSerie()?.image || ''" 
+                        class="card-img-top" 
+                        alt="Poster" 
+                        id="detail-image" 
+                        [style.display]="hasImage() ? 'block' : 'none'"
+                        style="max-height:240px;object-fit:cover;">
+                    <div class="card-body">
+                        <h5 class="card-title" id="detail-title">
+                            {{ selectedSerie()?.name || 'Selecciona una serie' }}
+                        </h5>
+                        <h6 class="card-subtitle mb-2 text-muted" id="detail-channel">
+                            {{ selectedSerie()?.channel || '' }}
+                        </h6>
+                        <p class="card-text" id="detail-description">
+                            {{ selectedSerie()?.description || 'Haz clic en una serie para ver su detalle aquí.' }}
+                        </p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Seasons: <span id="detail-seasons">{{ selectedSerie()?.seasons || '-' }}</span>
+                            </small>
+                        </p>
+                        <a 
+                            [href]="selectedSerie()?.link || '#'" 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            id="detail-link" 
+                            [style.display]="hasLink() ? 'block' : 'none'"
+                            style="word-break:break-all;color:#0d6efd;text-decoration:underline;">
+                            {{ selectedSerie()?.link || '' }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
