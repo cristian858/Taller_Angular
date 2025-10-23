@@ -3,19 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "taller_c.ochoao": {
+    "taller-c.ochoao": {
       "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "standalone": false
-        },
-        "@schematics/angular:directive": {
-          "standalone": false
-        },
-        "@schematics/angular:pipe": {
-          "standalone": false
-        }
-      },
+      "schematics": {},
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -66,10 +56,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "taller_c.ochoao:build:production"
+              "buildTarget": "taller-c.ochoao:build:production"
             },
             "development": {
-              "buildTarget": "taller_c.ochoao:build:development"
+              "buildTarget": "taller-c.ochoao:build:development"
             }
           },
           "defaultConfiguration": "development"
